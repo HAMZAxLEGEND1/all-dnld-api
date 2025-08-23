@@ -19,7 +19,7 @@ app.get("/download", (req, res) => {
     const output = path.join(downloadDir, `video_${Date.now()}.mp4`);
 
     // yt-dlp command to download video + audio and merge to mp4
-    const cmd = `py -m yt_dlp -f "bv*+ba/b" --merge-output-format mp4 -o "${output}" "${url}"`;
+    const cmd = `python3 -m yt_dlp -f "bv*+ba/b" --merge-output-format mp4 -o "${output}" "${url}"`;
 
     exec(cmd, { maxBuffer: 1024 * 1024 * 50 }, (error, stdout, stderr) => {
         if (error) {
